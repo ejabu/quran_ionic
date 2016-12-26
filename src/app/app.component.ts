@@ -12,6 +12,7 @@ import { QuizPage } from '../pages/quiz/quiz';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
+import { Quran } from '../providers/quran';
 import { LocalNotifications } from 'ionic-native';
 import * as moment from 'moment';
 
@@ -66,6 +67,7 @@ export class ConferenceApp {
   constructor(
     public events: Events,
     public userData: UserData,
+    public Quran: Quran,
     public menu: MenuController,
     public platform: Platform,
     confData: ConferenceData,
@@ -80,6 +82,9 @@ export class ConferenceApp {
     // load the conference data
     confData.load();
     // quran.load();
+    Quran.findLastIndex()
+
+
 
     console.log("this.appPages")
     console.log(this.appPages)

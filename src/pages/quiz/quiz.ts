@@ -61,7 +61,8 @@ export class QuizPage {
   }
 
   getAyat2() {
-      this.getAyat()
+      console.log('haha')
+      // this.getAyat()
   }
 
   onSignup() {
