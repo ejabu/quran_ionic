@@ -1,0 +1,94 @@
+
+@font-face {
+  font-family: 'Uthman';
+  src: url('../assets/fonts/Uthman.ttf');
+}
+
+@font-face {
+  font-family: 'Uthmanic';
+  src: url('../assets/fonts/Uthmanic.ttf');
+}
+@font-face {
+  font-family: 'Raleway-ExtraLight';
+  src: url('../assets/fonts/Raleway-ExtraLight.ttf');
+}
+@font-face {
+  font-family: 'Raleway-Light';
+  src: url('../assets/fonts/Raleway-Light.ttf');
+}
+
+page-quiz .logo {
+  padding: 20px 0;
+  min-height: 200px;
+  text-align: center;
+}
+
+page-quiz .logo img {
+  max-width: 150px;
+}
+
+page-quiz {
+  .toolbar-background {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .footer-md::before {
+    display: none;
+  }
+
+  .button-large-md {
+    font-size: 1.5rem;
+  }
+
+
+  .mu {
+    background-color: red;
+    text-align: center;
+    font-size: 120px;
+    backface-visibility: hidden;
+    margin-top: 50px;
+  }
+
+
+  .mean {
+    transform: rotateY(180deg);
+    width: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+
+
+    .card-md{
+        background-color: #F9FAFB;
+
+    }
+    .vocab {
+        margin: 10px 0px;
+        font-family: 'Raleway-ExtraLight';
+        color: lightblue;
+    }
+
+  }
+
+  .flipped {
+      transform: rotateY(0deg);
+
+  }
+  .vocab {
+      text-align: center;
+      width: 100%;
+      margin: 20px 0px;
+    //   font-size: 16px;
+      font-family: 'Raleway-Light';
+
+
+  }
+  .quiz{
+      color: rebeccapurple;
+  }
+  .button-own{
+      background-color: #1C90F3;
+
+
+  }
+}

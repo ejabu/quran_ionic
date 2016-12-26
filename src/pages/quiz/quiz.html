@@ -1,0 +1,72 @@
+<ion-header no-shadow>
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click)="isClassVisible = !isClassVisible;" color="lightgreen">Skip</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+
+    <ion-card>
+      <ion-card-header>
+
+
+      </ion-card-header>
+      <ion-card-content>
+        <div class="quiz vocab">
+            <h1 [innerHtml]="session">
+            </h1>
+        </div>
+
+      </ion-card-content>
+      <ion-row no-padding>
+
+        <ion-col text-center>
+          <button ion-button clear small (click)="isClassVisible = !isClassVisible;" color="rebeccapurple" icon-left>
+          <ion-icon name='share-alt'> </ion-icon>
+        </button>
+        </ion-col>
+
+      </ion-row>
+    </ion-card>
+
+    <div [class.flipped]="isClassVisible" class="mean">
+      <ion-card>
+
+        <ion-card-content>
+          <div class="vocab">
+              <h2 [innerHtml]="session2">
+              </h2>
+          </div>
+        </ion-card-content>
+
+      </ion-card>
+    </div>
+
+  </ion-list>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-row no-padding>
+      <ion-col width-50 text-center>
+        <button ion-button block medium color="light" icon-left (click)="getAyat2()">
+           <ion-icon name="close"></ion-icon>
+
+         </button>
+      </ion-col>
+
+      <ion-col width-50 text-center>
+        <button ion-button block medium class="button-own" icon-left (click)="getAyat()">
+           <ion-icon name='checkmark'></ion-icon>
+
+         </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-toolbar>
+</ion-footer>
