@@ -18,6 +18,7 @@ export class QuizPage {
 
   session: any;
   session2: any;
+  index: any;
   isClassVisible: any;
   constructor(
     public navCtrl: NavController,
@@ -28,25 +29,32 @@ export class QuizPage {
     quran.load();
     this.isClassVisible = false;
     quran.getAyat().then(speakers => {
-      this.session = speakers[0];
+      console.log(speakers)
+      this.session = speakers[2];
       this.session2 = speakers[1];
+      this.index = parseInt(speakers[3], 10);
     });
   }
 
   getAyat() {
     if (this.isClassVisible == true) {
         setTimeout(() => {
-            this.quran.getAyat().then(speakers => {
-              this.session = speakers[0];
+            this.quran.nextAyat(this.index).then(speakers => {
+              console.log(speakers)
+
+              this.session = speakers[2];
               this.session2 = speakers[1];
+              this.index = parseInt(speakers[3], 10);
+
             });
         }, 500);
         this.isClassVisible = false
     }
     else{
-        this.quran.getAyat().then(speakers => {
-          this.session = speakers[0];
+        this.quran.nextAyat(this.index).then(speakers => {
+          this.session = speakers[2];
           this.session2 = speakers[1];
+          this.index = parseInt(speakers[3], 10);
         });
         this.isClassVisible = false
     }

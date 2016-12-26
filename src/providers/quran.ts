@@ -25,7 +25,7 @@ export class Quran {
       // We're using Angular Http provider to request the data,
       // then on the response it'll map the JSON data to a parsed JS object.
       // Next we process the data and resolve the promise with the new data.
-      this.http.get('assets/data/toefl1.csv').subscribe((res) => {
+      this.http.get('assets/data/quran.csv').subscribe((res) => {
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference
         this.data = this.processData(res);
@@ -50,9 +50,17 @@ export class Quran {
   getAyat() {
     return this.load().then(data => {
       let index = this.getRandomInt(0, 1147)
+      return data['data'][1];
+    });
+  }
+  nextAyat(index) {
+    console.log('next')
+    console.log(index)
+    return this.load().then(data => {
+      console.log("this.index")
+      console.log(index)
       return data['data'][index];
     });
   }
-
 
 }

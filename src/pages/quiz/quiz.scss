@@ -75,12 +75,15 @@ page-quiz {
 
   }
   .vocab {
-      text-align: center;
+      h1 {
+        text-align: right;
+      line-height: 70px;
+      font-size: 4rem;
       width: 100%;
       margin: 20px 0px;
     //   font-size: 16px;
-      font-family: 'Raleway-Light';
-
+      font-family: 'Uthmanic';
+    }
 
   }
   .quiz{
