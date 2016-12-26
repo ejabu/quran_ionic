@@ -31,7 +31,7 @@ export class QuizPage {
     quran.getAyat().then(speakers => {
       console.log(speakers)
       this.session = speakers[2];
-      this.session2 = speakers[1];
+      this.session2 = speakers[4];
       this.index = parseInt(speakers[3], 10);
     });
   }
@@ -43,7 +43,7 @@ export class QuizPage {
               console.log(speakers)
 
               this.session = speakers[2];
-              this.session2 = speakers[1];
+              this.session2 = speakers[4];
               this.index = parseInt(speakers[3], 10);
 
             });
@@ -53,7 +53,7 @@ export class QuizPage {
     else{
         this.quran.nextAyat(this.index).then(speakers => {
           this.session = speakers[2];
-          this.session2 = speakers[1];
+          this.session2 = speakers[4];
           this.index = parseInt(speakers[3], 10);
         });
         this.isClassVisible = false
