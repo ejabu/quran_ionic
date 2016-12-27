@@ -64,7 +64,7 @@ export class Quran {
 
   getAyat() {
     return this.load().then(data => {
-      let index = this.getRandomInt(0, 1147)
+      // let index = this.getRandomInt(0, 1147)
       console.log("this.lastIndex")
       console.log(this.lastIndex)
       if (this.lastIndex) {
@@ -79,17 +79,32 @@ export class Quran {
   nextAyat(index) {
     console.log('next')
     this.storage.set('index', index);
-    // this.storage.get('index').then((value) => {
-    //   // return value;
-    //   console.log("valuesetstorage")
-    //   console.log(value)
-    // });
     console.log(index)
     return this.load().then(data => {
       console.log("this.index")
       console.log(index)
+      console.log("this.lastIndex")
+      console.log(this.lastIndex)
+
+      this.lastIndex=index
 
       return data['data'][index];
+    });
+  }
+  prevAyat(index) {
+    console.log('prev')
+    this.storage.set('index', index);
+    console.log(index)
+    return this.load().then(data => {
+      console.log("this.index")
+      console.log(index-2)
+      console.log("this.lastIndex")
+      console.log(this.lastIndex)
+
+      this.lastIndex=index-2
+
+
+      return data['data'][index-2];
     });
   }
 

@@ -59,10 +59,28 @@ export class QuizPage {
         this.isClassVisible = false
     }
   }
+  prev() {
+    if (this.isClassVisible == true) {
+        setTimeout(() => {
+            this.quran.prevAyat(this.index).then(speakers => {
+              console.log(speakers)
 
-  getAyat2() {
-      console.log('haha')
-      // this.getAyat()
+              this.session = speakers[2];
+              this.session2 = speakers[4];
+              this.index = parseInt(speakers[3], 10);
+
+            });
+        }, 500);
+        this.isClassVisible = false
+    }
+    else{
+        this.quran.prevAyat(this.index).then(speakers => {
+          this.session = speakers[2];
+          this.session2 = speakers[4];
+          this.index = parseInt(speakers[3], 10);
+        });
+        this.isClassVisible = false
+    }
   }
 
   onSignup() {
