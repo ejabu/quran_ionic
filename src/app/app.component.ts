@@ -56,8 +56,6 @@ export class ConferenceApp {
     confData.load();
     // quran.load();
     Quran.findLastIndex()
-    console.log("this.appPages")
-    console.log(this.appPages)
     this.enableMenu(false);
     this.listenToLoginEvents();
   }

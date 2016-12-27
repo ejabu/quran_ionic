@@ -18,15 +18,7 @@ export class LoginPage {
     public quran: Quran,
   ) {
     this.quran.viewAll().then(speakers => {
-      console.log(speakers)
       this.notes = speakers
-      // this.title = "Qs " + speakers[0] + ":" + speakers[1];
-      //
-      //
-      // this.session = speakers[2];
-      // this.session2 = speakers[4];
-      // this.index = parseInt(speakers[3], 10);
-
     });
 
   }

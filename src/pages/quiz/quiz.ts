@@ -28,7 +28,6 @@ export class QuizPage {
     quran.load();
     this.isClassVisible = false;
     quran.getAyat().then(speakers => {
-      console.log(speakers)
       this.title = "Qs "+speakers[0]+":"+speakers[1];
       this.session = speakers[2];
       this.session2 = speakers[4];
@@ -40,7 +39,6 @@ export class QuizPage {
     if (this.isClassVisible == true) {
         setTimeout(() => {
             this.quran.nextAyat(this.index).then(speakers => {
-              console.log(speakers)
               this.title = "Qs "+speakers[0]+":"+speakers[1];
 
               this.session = speakers[2];
@@ -66,7 +64,6 @@ export class QuizPage {
     if (this.isClassVisible == true) {
         setTimeout(() => {
             this.quran.prevAyat(this.index).then(speakers => {
-              console.log(speakers)
               this.title = "Qs "+speakers[0]+":"+speakers[1];
 
 
@@ -90,8 +87,6 @@ export class QuizPage {
     }
   }
   star(){
-    console.log('star')
-    console.log('star this index :', this.index)
     this.quran.star(this.index)
 
   }
