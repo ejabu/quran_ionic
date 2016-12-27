@@ -18,6 +18,7 @@ export class QuizPage {
 
   session: any;
   session2: any;
+  title: any;
   index: any;
   isClassVisible: any;
   constructor(
@@ -30,6 +31,7 @@ export class QuizPage {
     this.isClassVisible = false;
     quran.getAyat().then(speakers => {
       console.log(speakers)
+      this.title = "Qs "+speakers[0]+":"+speakers[1];
       this.session = speakers[2];
       this.session2 = speakers[4];
       this.index = parseInt(speakers[3], 10);
@@ -41,6 +43,7 @@ export class QuizPage {
         setTimeout(() => {
             this.quran.nextAyat(this.index).then(speakers => {
               console.log(speakers)
+              this.title = "Qs "+speakers[0]+":"+speakers[1];
 
               this.session = speakers[2];
               this.session2 = speakers[4];
@@ -52,6 +55,8 @@ export class QuizPage {
     }
     else{
         this.quran.nextAyat(this.index).then(speakers => {
+          this.title = "Qs "+speakers[0]+":"+speakers[1];
+
           this.session = speakers[2];
           this.session2 = speakers[4];
           this.index = parseInt(speakers[3], 10);
@@ -64,6 +69,8 @@ export class QuizPage {
         setTimeout(() => {
             this.quran.prevAyat(this.index).then(speakers => {
               console.log(speakers)
+              this.title = "Qs "+speakers[0]+":"+speakers[1];
+
 
               this.session = speakers[2];
               this.session2 = speakers[4];
@@ -75,6 +82,8 @@ export class QuizPage {
     }
     else{
         this.quran.prevAyat(this.index).then(speakers => {
+          this.title = "Qs "+speakers[0]+":"+speakers[1];
+
           this.session = speakers[2];
           this.session2 = speakers[4];
           this.index = parseInt(speakers[3], 10);

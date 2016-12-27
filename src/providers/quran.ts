@@ -93,7 +93,7 @@ export class Quran {
   }
   prevAyat(index) {
     console.log('prev')
-    this.storage.set('index', index);
+    this.storage.set('index', index-2);
     console.log(index)
     return this.load().then(data => {
       console.log("this.index")
