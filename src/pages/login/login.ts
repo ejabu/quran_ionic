@@ -4,7 +4,7 @@ import { NavController } from 'ionic-angular';
 
 import { SignupPage } from '../signup/signup';
 import { TabsPage } from '../tabs/tabs';
-import { UserData } from '../../providers/user-data';
+import { Quran } from '../../providers/quran';
 
 
 @Component({
@@ -12,21 +12,29 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  login: {username?: string, password?: string} = {};
-  submitted = false;
+  notes: any;
 
-  constructor(public navCtrl: NavController, public userData: UserData) { }
+  constructor(
+    public navCtrl: NavController,
+    public quran: Quran,
+  ) {
+    this.quran.viewAll().then(speakers => {
+      console.log(speakers)
+      this.notes = speakers
+      // this.title = "Qs " + speakers[0] + ":" + speakers[1];
+      //
+      //
+      // this.session = speakers[2];
+      // this.session2 = speakers[4];
+      // this.index = parseInt(speakers[3], 10);
 
-  onLogin(form) {
-    this.submitted = true;
+    });
 
-    if (form.valid) {
-      this.userData.login(this.login.username);
-      this.navCtrl.push(TabsPage);
-    }
   }
 
-  onSignup() {
-    this.navCtrl.push(SignupPage);
+  clear(){
+    this.quran.deleteAll()
   }
+
+
 }

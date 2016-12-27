@@ -92,8 +92,12 @@ export class QuizPage {
   }
   star(){
     console.log('star')
+    console.log('star this index :', this.index)
+    this.quran.star(this.index)
 
   }
+
+
   onSignup() {
     this.navCtrl.push(SignupPage);
   }
