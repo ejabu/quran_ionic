@@ -61,6 +61,17 @@ export class QuizPage {
     }
   }
   prev() {
+    var audio = new Audio();
+    // audio.src = "https://s3.amazonaws.com/ionic-audio/Message+in+a+bottle.mp3";
+    // audio.src = "https://www.dropbox.com/home?preview=114An-nas.mp3";
+    // audio.src = "https://drive.google.com/open?id=0B7bj5iU6fZENQzdYdGRJV2VxRlE";
+    audio.src = "http://flight-attendent-rabbit-73468.netlify.com/114An-nas.mp3";
+    audio.load();
+    audio.play();
+
+    console.log(audio)
+
+
     if (this.isClassVisible == true) {
         setTimeout(() => {
             this.quran.prevAyat(this.index).then(speakers => {
