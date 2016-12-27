@@ -8,7 +8,6 @@ import { SignupPage } from '../signup/signup';
 import { UserData } from '../../providers/user-data';
 
 declare var OriDomi: any;
-
 @Component({
   selector: 'page-quiz',
   templateUrl: 'quiz.html'
@@ -91,7 +90,10 @@ export class QuizPage {
         this.isClassVisible = false
     }
   }
+  star(){
+    console.log('star')
 
+  }
   onSignup() {
     this.navCtrl.push(SignupPage);
   }
