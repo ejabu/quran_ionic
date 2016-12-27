@@ -3,23 +3,12 @@ import { Component, ViewChild } from '@angular/core';
 import { Events, MenuController, Nav, Platform, AlertController } from 'ionic-angular';
 import { Splashscreen, StatusBar } from 'ionic-native';
 
-import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
-import { TabsPage } from '../pages/tabs/tabs';
-// import { TutorialPage } from '../pages/tutorial/tutorial';
 import { QuizPage } from '../pages/quiz/quiz';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 import { Quran } from '../providers/quran';
-import { LocalNotifications } from 'ionic-native';
-import * as moment from 'moment';
-
-// import { Quran } from '../providers/quran';
-
-
-// declare var Papa: any;
 
 
 export interface PageInterface {
@@ -42,27 +31,11 @@ export class ConferenceApp {
   // the left menu only works after login
   // the login page disables the left menu
   appPages: PageInterface[] = [
-    { title: 'Quiz', component: QuizPage, icon: 'calendar' },
-    // { title: 'Schedule', component: TabsPage, icon: 'calendar' },
-    // { title: 'Speakers', component: TabsPage, index: 1, icon: 'contacts' },
-    // { title: 'Map', component: TabsPage, index: 2, icon: 'map' },
-    // { title: 'About', component: TabsPage, index: 3, icon: 'information-circle' },
+    { title: 'Read', component: QuizPage, icon: 'ios-book' },
+    { title: 'Log', component: LoginPage, icon: 'clipboard' },
   ];
-  loggedInPages: PageInterface[] = [
-    { title: 'Account', component: AccountPage, icon: 'person' },
-    { title: 'Logout', component: TabsPage, icon: 'log-out', logsOut: true }
-  ];
-  loggedOutPages: PageInterface[] = [
-    { title: 'Login', component: LoginPage, icon: 'log-in' },
-    { title: 'Signup', component: SignupPage, icon: 'person-add' }
-  ];
-  rootPage: any = QuizPage;
 
-  notifyTime: any;
-   notifications: any[] = [];
-   days: any[];
-   chosenHours: number;
-   chosenMinutes: number;
+  rootPage: any = QuizPage;
 
   constructor(
     public events: Events,
@@ -83,52 +56,13 @@ export class ConferenceApp {
     confData.load();
     // quran.load();
     Quran.findLastIndex()
-
-
-
     console.log("this.appPages")
     console.log(this.appPages)
-    // decide which menu items should be hidden by current login status stored in local storage
-    this.userData.hasLoggedIn().then((hasLoggedIn) => {
-      this.enableMenu(hasLoggedIn === true);
-    });
-
+    this.enableMenu(false);
     this.listenToLoginEvents();
-
-    this.notifyTime = moment(new Date()).format();
-
-        this.chosenHours = new Date().getHours();
-        this.chosenMinutes = new Date().getMinutes();
-
-        this.days = [
-            {title: 'Monday', dayCode: 1, checked: false},
-            {title: 'Tuesday', dayCode: 2, checked: false},
-            {title: 'Wednesday', dayCode: 3, checked: false},
-            {title: 'Thursday', dayCode: 4, checked: false},
-            {title: 'Friday', dayCode: 5, checked: false},
-            {title: 'Saturday', dayCode: 6, checked: false},
-            {title: 'Sunday', dayCode: 0, checked: false}
-        ];
   }
 
-  tes() {
-    // console.log(this.nav);
-    console.log(this.menu);
 
-    let firstNotificationTime = new Date();
-
-
-    let notification = {
-      id: 1,
-      title: 'Hey!',
-      text: 'You just got notified :)',
-      at: firstNotificationTime,
-      every: 'week'
-    };
-
-    this.notifications.push(notification);
-    LocalNotifications.schedule(this.notifications);
-  }
 
   openPage(page: PageInterface) {
     // the nav component was found using @ViewChild(Nav)
@@ -164,70 +98,11 @@ export class ConferenceApp {
   }
 
   enableMenu(loggedIn) {
-
-
     this.menu.enable(loggedIn, 'loggedInMenu');
     this.menu.enable(!loggedIn, 'loggedOutMenu');
   }
 
 
 
-  addNotifications() {
 
-    let currentDate = new Date();
-    let currentDay = currentDate.getDay(); // Sunday = 0, Monday = 1, etc.
-
-    for (let day of this.days) {
-
-      if (day.checked) {
-
-        let firstNotificationTime = new Date();
-        let dayDifference = day.dayCode - currentDay;
-
-        if (dayDifference < 0) {
-          dayDifference = dayDifference + 7; // for cases where the day is in the following week
-        }
-
-        // firstNotificationTime.setHours(firstNotificationTime.getHours() + (24 * (dayDifference)));
-        // firstNotificationTime.setHours(this.chosenHours);
-        // firstNotificationTime.setMinutes(this.chosenMinutes);
-
-        let notification = {
-          id: 1,
-          title: 'Hey!',
-          text: 'You just got notified :)',
-          at: firstNotificationTime,
-          every: 'week'
-        };
-
-        this.notifications.push(notification);
-
-      }
-
-    }
-
-    console.log("Notifications to be scheduled: ", this.notifications);
-
-    if (this.platform.is('cordova')) {
-
-      // Cancel any existing notifications
-      LocalNotifications.cancelAll().then(() => {
-
-        // Schedule the new notifications
-        LocalNotifications.schedule(this.notifications);
-
-        this.notifications = [];
-
-        let alert = this.alertCtrl.create({
-          title: 'Notifications set',
-          buttons: ['Ok']
-        });
-
-        alert.present();
-
-      });
-
-    }
-
-  }
 }

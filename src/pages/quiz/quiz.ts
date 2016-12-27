@@ -4,7 +4,6 @@ import { NavController } from 'ionic-angular';
 import { Quran } from '../../providers/quran';
 
 
-import { SignupPage } from '../signup/signup';
 import { UserData } from '../../providers/user-data';
 
 declare var OriDomi: any;
@@ -98,7 +97,5 @@ export class QuizPage {
   }
 
 
-  onSignup() {
-    this.navCtrl.push(SignupPage);
-  }
+
 }
