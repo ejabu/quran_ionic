@@ -9,6 +9,18 @@
   src: url('../assets/fonts/Uthmanic.ttf');
 }
 @font-face {
+  font-family: 'Uthmanic2';
+  src: url('../assets/fonts/UthmanicHafs1 Ver09_1.ttf');
+}
+@font-face {
+  font-family: 'me_quran';
+  src: url('../assets/fonts/me_quran.ttf');
+}
+@font-face {
+  font-family: 'Scheherazade';
+  src: url('../assets/fonts/Scheherazade.ttf');
+}
+@font-face {
   font-family: 'Raleway-ExtraLight';
   src: url('../assets/fonts/Raleway-ExtraLight.ttf');
 }
@@ -76,13 +88,15 @@ page-quiz {
   }
   .vocab {
       h1 {
-        text-align: right;
+        text-align: justify;
+        direction: rtl;
       line-height: 70px;
       font-size: 4rem;
       width: 100%;
       margin: 20px 0px;
     //   font-size: 16px;
-      font-family: 'Uthmanic';
+      // font-family: 'me_quran';
+      font-family: 'Uthmanic2';
     }
 
   }
