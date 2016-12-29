@@ -12,12 +12,27 @@
   <ion-list>
     <div class="logo" (click)="clear()">
       <img src="assets/img/appicon.svg">
-      <ion-input type="text" [(ngModel)]="todo" name="title"></ion-input>
+
+    </div>
+    <div>
 
     </div>
     <div [innerHtml]="notes">
     </div>
 
   </ion-list>
-  <button ion-button block outline (click)="jump()">Play</button>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Surah</ion-label>
+      <ion-input type="text" [(ngModel)]="surah" name="surah"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ayat</ion-label>
+      <ion-input type="text" [(ngModel)]="ayah" name="ayah"></ion-input>
+    </ion-item>
+    <ion-item>
+    </ion-item>
+  </ion-list>
+  <button ion-button block outline (click)="jump()">Go To Verse</button>
 </ion-content>
