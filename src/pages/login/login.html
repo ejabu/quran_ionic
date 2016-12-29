@@ -12,10 +12,12 @@
   <ion-list>
     <div class="logo" (click)="clear()">
       <img src="assets/img/appicon.svg">
+      <ion-input type="text" [(ngModel)]="todo" name="title"></ion-input>
+
     </div>
     <div [innerHtml]="notes">
     </div>
 
   </ion-list>
-
+  <button ion-button block outline (click)="jump()">Play</button>
 </ion-content>

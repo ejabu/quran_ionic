@@ -1,8 +1,7 @@
 import { Component, ViewChild, Renderer  } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Quran } from '../../providers/quran';
-
 
 import { UserData } from '../../providers/user-data';
 
@@ -24,10 +23,17 @@ export class QuizPage {
     public userData: UserData,
     public quran: Quran,
     private renderer: Renderer,
+    private navParams: NavParams
   ) {
     quran.load();
+    console.log("navParams.data")
+    console.log(navParams.data)
+    var index = false
+    if (navParams.data.jump) {
+        index = navParams.data.jump
+    }
     this.isClassVisible = false;
-    quran.getAyat().then(speakers => {
+    quran.getAyat(index).then(speakers => {
       this.title = "Qs "+speakers[0]+":"+speakers[1];
       this.session = speakers[2];
       this.session2 = speakers[4];

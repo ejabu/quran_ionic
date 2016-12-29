@@ -60,10 +60,13 @@ export class Quran {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  getAyat() {
+  getAyat(index:any=false) {
     return this.load().then(data => {
       // let index = this.getRandomInt(0, 1147)
-      if (this.lastIndex) {
+      if (index) {
+          return data['data'][index];
+      }
+      else if (this.lastIndex) {
           return data['data'][this.lastIndex];
       }
       else{
