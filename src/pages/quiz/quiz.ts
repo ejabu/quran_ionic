@@ -18,6 +18,7 @@ export class QuizPage {
   title: any;
   index: any;
   isClassVisible: any;
+  audioState: any;
   constructor(
     public navCtrl: NavController,
     public userData: UserData,
@@ -39,6 +40,7 @@ export class QuizPage {
       this.session2 = speakers[4];
       this.index = parseInt(speakers[3], 10);
     });
+    this.audioState = "play"
   }
 
   getAyat() {
@@ -103,6 +105,16 @@ export class QuizPage {
   star(){
     this.quran.star(this.index)
 
+  }
+
+  changeAudioState(){
+    console.log("change")
+    if (this.audioState === "play") {
+        this.audioState = "pause"
+    }
+    else {
+      this.audioState = "play"
+    }
   }
 
 

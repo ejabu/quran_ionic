@@ -1,7 +1,12 @@
 <ion-header no-shadow>
   <ion-navbar>
-    <div class="title" [innerHtml]="title" (click)="star()">
+    <div class="title" >
+    <div class="display-inline" [innerHtml]="title" (click)="star()">
 
+    </div>
+    <div class="righ2" (click)="changeAudioState()">
+      <ion-icon [name]='audioState'> </ion-icon>
+    </div>
     </div>
 
   </ion-navbar>
