@@ -15,8 +15,12 @@ export class QuizPage {
 
   session: any;
   session2: any;
+  audio: any;
   title: any;
   index: any;
+  surahIndex=0;
+  ayahIndex=0;
+  indexPlaying=0;
   isClassVisible: any;
   audioState: any;
   constructor(
@@ -39,8 +43,12 @@ export class QuizPage {
       this.session = speakers[2];
       this.session2 = speakers[4];
       this.index = parseInt(speakers[3], 10);
+      this.surahIndex=speakers[0]
+      this.ayahIndex=speakers[1]
     });
     this.audioState = "play"
+    this.audio = new Audio()
+
   }
 
   getAyat() {
@@ -52,6 +60,8 @@ export class QuizPage {
               this.session = speakers[2];
               this.session2 = speakers[4];
               this.index = parseInt(speakers[3], 10);
+              this.surahIndex=speakers[0]
+              this.ayahIndex=speakers[1]
 
             });
         }, 500);
@@ -64,6 +74,8 @@ export class QuizPage {
           this.session = speakers[2];
           this.session2 = speakers[4];
           this.index = parseInt(speakers[3], 10);
+          this.surahIndex=speakers[0]
+          this.ayahIndex=speakers[1]
         });
         this.isClassVisible = false
     }
@@ -86,6 +98,8 @@ export class QuizPage {
               this.session = speakers[2];
               this.session2 = speakers[4];
               this.index = parseInt(speakers[3], 10);
+              this.surahIndex=speakers[0]
+              this.ayahIndex=speakers[1]
 
             });
         }, 500);
@@ -98,6 +112,8 @@ export class QuizPage {
           this.session = speakers[2];
           this.session2 = speakers[4];
           this.index = parseInt(speakers[3], 10);
+          this.surahIndex=speakers[0]
+          this.ayahIndex=speakers[1]
         });
         this.isClassVisible = false
     }
@@ -109,11 +125,33 @@ export class QuizPage {
 
   changeAudioState(){
     console.log("change")
-    if (this.audioState === "play") {
-        this.audioState = "pause"
+
+    function to3char(word) {
+        var length = word.length
+        var toAdd = 3 - length
+        for (var i = 0; i < toAdd; i++) {
+            word = "0"+word
+        }
+        return word
     }
+
+    if (this.audioState === "play") {
+        this.audio.src = 'http://www.everyayah.com/data/Abdurrahmaan_As-Sudais_192kbps/'+to3char(this.surahIndex)+to3char(this.ayahIndex)+'.mp3'
+        console.log(this.audio.src)
+        this.audio.play();
+        this.audioState = "pause"
+        console.log(this)
+        this.audio.onended = (function(scope) {
+          this.audioState = "play"
+          console.log('eja play2')
+        }.bind(this));
+
+      }
     else {
       this.audioState = "play"
+      this.audio.pause();
+
+
     }
   }
 
